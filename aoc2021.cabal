@@ -1,9 +1,7 @@
 cabal-version:      2.4
 name:               aoc2021
 version:            0.1.0.0
-
--- A short (one-line) description of the package.
--- synopsis:
+synopsis:           Advent of Code 2021 in Haskell
 
 -- A longer description of the package.
 -- description:
@@ -14,21 +12,38 @@ version:            0.1.0.0
 -- The license under which the package is released.
 -- license:
 author:             Taylor Manderson
-maintainer:         taylor.manderson@cubiko.com.au
+maintainer:         me@trm.io
 
 -- A copyright notice.
 -- copyright:
 -- category:
-extra-source-files: CHANGELOG.md
 
-executable aoc2021
-    main-is:          Main.hs
+executable day1a
+    main-is:          Day1A.hs
+    build-depends:    base ^>=4.14.3.0
+    hs-source-dirs:   src
+    default-language: Haskell2010
 
     -- Modules included in this executable, other than Main.
     -- other-modules:
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
+
+executable day1b
+    main-is:          Day1B.hs
     build-depends:    base ^>=4.14.3.0
-    hs-source-dirs:   src 
+    hs-source-dirs:   src
+    default-language: Haskell2010
+
+executable day2a
+    main-is:          Day2A.hs
+    build-depends:    base ^>=4.14.3.0, split
+    hs-source-dirs:   src
+    default-language: Haskell2010
+
+executable day2b
+    main-is:          Day2B.hs
+    build-depends:    base ^>=4.14.3.0, split
+    hs-source-dirs:   src
     default-language: Haskell2010
