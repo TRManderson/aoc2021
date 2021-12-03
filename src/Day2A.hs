@@ -1,6 +1,7 @@
 module Main where
 import Data.List.Split (splitOn)
 import Data.Maybe (mapMaybe)
+import Data.Biapplicative (biliftA2)
 
 
 parse :: String -> Maybe (Int, Int)
@@ -14,7 +15,7 @@ parse = rest . splitOn  " "
     rest _ = Nothing
 
 solve :: [(Int, Int)] -> Int
-solve = uncurry (*) . foldr (\(a, b) (c,d) -> (a+c, b+d)) (0, 0)
+solve = uncurry (*) . foldr (biliftA2 (+) (+)) (0, 0)
 
 main :: IO ()
 main = getContents  >>= (print . solve . mapMaybe parse . lines)

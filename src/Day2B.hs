@@ -3,7 +3,6 @@ import Data.List.Split (splitOn)
 import Data.Maybe (mapMaybe)
 import Data.Foldable (foldl')
 
-
 parse :: String -> Maybe (Int, Int)
 parse = rest . splitOn  " "
   where
@@ -15,7 +14,10 @@ parse = rest . splitOn  " "
     rest _ = Nothing
 
 solve :: [(Int, Int)] -> Int
-solve = (\(p, d, a) -> p * d) . foldl' (\(p, d, a) (p',a') -> (p+p', d + (p' * a), a+a')) (0, 0, 0)
+solve = result . foldl' fn (0, 0, 0)
+  where
+      fn (pos, dep, aim) (pos', aim') = (pos + pos', dep + (pos' * aim), aim + aim')
+      result (pos, dep, _) = pos * dep
 
 main :: IO ()
 main = getContents  >>= (print . solve . mapMaybe parse . lines)
